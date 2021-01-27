@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jugador index{% endblock %}
+
+{% block body %}
+    <h1>Jugador index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Cognoms</th>
+                <th>Equip</th>
+                <th>Pais</th>
+                <th>Elo</th>
+                <th>Byes</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jugador in jugadors %}
+            <tr>
+                <td>{{ jugador.id }}</td>
+                <td>{{ jugador.nom }}</td>
+                <td>{{ jugador.cognoms }}</td>
+                <td>{{ jugador.equip }}</td>
+                <td>{{ jugador.pais }}</td>
+                <td>{{ jugador.elo }}</td>
+                <td>{{ jugador.byes }}</td>
+                <td>
+                    <a href="{{ path('jugador_show', {'id': jugador.id}) }}">show</a>
+                    <a href="{{ path('jugador_edit', {'id': jugador.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('jugador_new') }}">Create new</a>
+{% endblock %}
